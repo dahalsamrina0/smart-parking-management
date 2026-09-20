@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Mukta:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: 'Mukta', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: #f6f8fc;
+  color: #121b2b;
+}
+
+.deva { font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c2cee0; border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #94a6c2; background-clip: content-box; }
+
+@layer components {
+  .card {
+    @apply rounded-xl2 bg-white border border-slate2-100 shadow-card;
+  }
+  .card-pad { @apply card p-5; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+      transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-himal-400
+      focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none;
+  }
+  .btn-primary { @apply btn bg-himal-600 text-white hover:bg-himal-700 active:scale-[0.98] shadow-sm shadow-himal-600/20; }
+  .btn-gold { @apply btn bg-pujari-500 text-white hover:bg-pujari-600 active:scale-[0.98] shadow-sm shadow-pujari-500/20; }
+  .btn-ghost { @apply btn bg-transparent text-slate2-600 hover:bg-slate2-100 hover:text-slate2-900; }
+  .btn-soft { @apply btn bg-himal-50 text-himal-700 hover:bg-himal-100; }
+  .btn-danger { @apply btn bg-sindur-500 text-white hover:bg-sindur-600 active:scale-[0.98]; }
+  .btn-outline { @apply btn border border-slate2-200 bg-white text-slate2-700 hover:bg-slate2-50; }
+
+  .input {
+    @apply w-full rounded-xl border border-slate2-200 bg-white px-3.5 py-2.5 text-sm text-slate2-900
+      placeholder:text-slate2-400 transition-all duration-150
+      focus:outline-none focus:ring-2 focus:ring-himal-400/40 focus:border-himal-400;
+  }
+  .label { @apply block text-xs font-semibold uppercase tracking-wide text-slate2-500 mb-1.5; }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+  .stat-label { @apply text-[11px] font-semibold uppercase tracking-wide text-slate2-400; }
+}
+
+.dot { @apply inline-block h-2.5 w-2.5 rounded-full; }
+
+/* Nepali flag shape via clip-path (double-pennant) */
+.nepal-flag {
+  clip-path: polygon(0 0, 100% 0, 100% 28%, 55% 28%, 100% 56%, 55% 56%, 100% 84%, 0 100%);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+.glass-dark {
+  background: rgba(10,20,48,0.55);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+}
+
+/* Himalayan ridge silhouette as CSS background */
+.himalaya-silhouette {
+  background-image:
+    radial-gradient(ellipse at 20% 100%, rgba(255,255,255,0.05) 0%, transparent 40%),
+    linear-gradient(transparent, rgba(7,15,36,0.6));
+}
+
+/* Temple pagoda pattern for sidebar */
+.temple-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='80' viewBox='0 0 120 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M20 70 L20 55 L15 55 L30 40 L45 55 L40 55 L40 70 Z'/%3E%3Cpath d='M60 70 L60 50 L52 50 L70 35 L88 50 L80 50 L80 70 Z'/%3E%3Cpath d='M95 70 L95 58 L90 58 L102 48 L114 58 L109 58 L109 70 Z'/%3E%3Cpath d='M30 40 L30 34 L28 34 L34 30 L40 34 L38 34 L38 40'/%3E%3Cpath d='M70 35 L70 28 L67 28 L74 22 L81 28 L78 28 L78 35'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 140px 90px;
+}
+
+/* prayer-flag string decoration */
+.prayer-flags {
+  background-image: linear-gradient(90deg,
+    transparent 0 4%, rgba(220,20,60,0.5) 4% 7%, transparent 7% 9%,
+    rgba(245,158,11,0.5) 9% 12%, transparent 12% 14%,
+    rgba(22,163,74,0.5) 14% 17%, transparent 17% 19%,
+    rgba(51,102,240,0.5) 19% 22%, transparent 22% 24%,
+    rgba(147,51,234,0.5) 24% 27%, transparent 27% 30%,
+    rgba(220,20,60,0.5) 30% 33%, transparent 33% 35%,
+    rgba(245,158,11,0.5) 35% 38%, transparent 38% 40%,
+    rgba(22,163,74,0.5) 40% 43%, transparent 43% 45%,
+    rgba(51,102,240,0.5) 45% 48%, transparent 48% 50%,
+    rgba(147,51,234,0.5) 50% 53%, transparent 53% 56%,
+    rgba(220,20,60,0.5) 56% 59%, transparent 59% 61%,
+    rgba(245,158,11,0.5) 61% 64%, transparent 64% 66%,
+    rgba(22,163,74,0.5) 66% 69%, transparent 69% 71%,
+    rgba(51,102,240,0.5) 71% 74%, transparent 74% 76%,
+    rgba(147,51,234,0.5) 76% 79%, transparent 79% 100%);
+  height: 6px;
+}
+
+.skeleton { position: relative; overflow: hidden; background: #eef2f8; }
+.skeleton::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
